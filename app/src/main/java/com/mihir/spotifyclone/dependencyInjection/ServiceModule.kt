@@ -4,10 +4,11 @@ import android.content.Context
 import android.media.AudioAttributes
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.bumptech.glide.util.Util
+import com.google.android.exoplayer2.util.Util
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.util.Util.getUserAgent
 import com.mihir.spotifyclone.remote.MusicDatabase
 import dagger.Module
 import dagger.Provides
@@ -41,12 +42,11 @@ object ServiceModule {
     ) = SimpleExoPlayer.Builder(context).build().apply {
         setAudioAttributes(audioAttributes,true)
         setHandleAudioBecomingNoisy(true)
-
     }
 
     @ServiceScoped
     @Provides
     fun provideDataSourceFactory(
         @ApplicationContext context: Context
-    ) = DefaultDataSourceFactory(context, com.google.android.exoplayer2.util.Util.getUserAgent(context,"Spotify Clone"))
+    ) = DefaultDataSourceFactory(context, Util.getUserAgent(context,"Spotify Clone"))
 }
