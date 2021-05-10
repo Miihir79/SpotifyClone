@@ -28,9 +28,9 @@ object ServiceModule {
     @ServiceScoped
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     @Provides
-    fun provideAudioAttributes(): AudioAttributes = AudioAttributes.Builder()
-        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-        .setUsage(AudioAttributes.USAGE_MEDIA)
+    fun provideAudioAttributes(): com.google.android.exoplayer2.audio.AudioAttributes = com.google.android.exoplayer2.audio.AudioAttributes.Builder()
+        .setContentType(C.CONTENT_TYPE_MUSIC)
+        .setUsage(C.USAGE_MEDIA)
         .build()
 
 
